@@ -9,9 +9,9 @@ class Barang extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_users','id_review','id_categori','nama_barang','harga','stok','jumlah_terjual'];
+    protected $fillable = ['id_user','id_review','id_categori','nama_barang','harga','stok','jumlah_terjual'];
 
     public function user(){
-        return $this->hasOne(User::class,'id_users','id');
+        return $this->belongsTo(User::class,'id_user','id');
     }
 }

@@ -82,6 +82,6 @@ class AksesController extends Controller
         $data = Akses::findOrFail($id);
         $data->delete();
         return redirect('/data/akses')
-        ->with('success', 'Record updated successfully!');
+        ->with('success', 'Record deleted successfully!');
     }
 }

@@ -59,11 +59,11 @@
                                     <td>{{ $i->user->name }}</td>
                                     <td>{{ $i->harga }}</td>
                                     <td>
-                                        <form action="{{ route('data.petugas.delete', $i->id) }}"
+                                        <form action="{{ route('barang.destroy', $i->id) }}"
                                             method="post" class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href=" {{ route('data.petugas.edit', $i->id) }} "
+                                            <a href=" {{ route('barang.edit', $i->id) }} "
                                                  class="btn btn-warning" type="button">Edit</a>
                                             <button type="submit" class="btn btn-danger">
                                                 Delete</button>
