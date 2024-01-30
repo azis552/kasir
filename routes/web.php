@@ -30,7 +30,7 @@ Route::get('/login',function(){
 
 Route::get('/register',function(){
     return view('login.register');
-});
+})->name('register');
 
 Route::post('/register/store',[LoginController::class,'register'])
 ->name('login.register.store');

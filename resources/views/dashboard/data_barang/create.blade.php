@@ -33,7 +33,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="{{ route('barang.index') }}" type="button" class="btn btn-warning mb-2">Kembali</a>
-                    <form action="{{ route('barang.store') }}" method="post">
+                    <form action="{{ route('barang.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         
                         <label for="">Petugas</label>
@@ -59,7 +59,8 @@
 
                         <label for="">Jumlah Terjual</label>
                         <input type="text" name="jumlah_terjual" id="jumlah_terjual" class="form-control">
-
+                        <label for="">Foto</label>
+                        <input type="file" name="photo" class="form-control">
                         <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                     </form>
                 </div>

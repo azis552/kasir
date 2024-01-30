@@ -38,8 +38,8 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <a href="{{ route('data.petugas.create') }}" type="button" class="btn btn-warning mb-2">Tambah
-                            Petugas</a>
+                        <a href="{{ route('barang.create') }}" type="button" class="btn btn-warning mb-2">Tambah
+                            Barang</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -47,6 +47,7 @@
                                     <th>Nama</th>
                                     <th>Petugas</th>
                                     <th>Harga</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -58,6 +59,7 @@
                                     <td>{{ $i->nama_barang}}</td>
                                     <td>{{ $i->user->name }}</td>
                                     <td>{{ $i->harga }}</td>
+                                    <td> <img src="{{ asset('storage/'.$i->photo) }}" alt="photo" height="100"> </td>
                                     <td>
                                         <form action="{{ route('barang.destroy', $i->id) }}"
                                             method="post" class="delete-form">

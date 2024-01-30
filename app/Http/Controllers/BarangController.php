@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Categori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
@@ -32,6 +33,7 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validasi = $request->validate([
             'id_user' => 'required',
             'id_categori' => 'required',
@@ -40,7 +42,9 @@ class BarangController extends Controller
             'stok' => 'required',
             'jumlah_terjual' => 'required'
         ]);
-
+        $imageName = time().'.'.$request->photo->extension();  
+        $request->photo->storeAs('public', $imageName);
+        $validasi['photo'] = $imageName;
         $simpan = Barang::create($validasi);
 
         return redirect('data/barang')->with('success','data barang berhasil ditambah');
@@ -79,6 +83,12 @@ class BarangController extends Controller
             'jumlah_terjual' => 'required'
         ]);
         $data = Barang::findOrFail($id);
+        if ($data->photo) {
+            \Storage::delete(['file', $data->photo]);
+        }
+        $imageName = time().'.'.$request->photo->extension();  
+        $request->photo->storeAs('public', $imageName);
+        $validasi['photo'] = $imageName;
         $data->update($validasi);
 
         return redirect('data/barang')->with('success','data barang berhasil diubah');
