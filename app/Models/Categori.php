@@ -9,4 +9,8 @@ class Categori extends Model
 {
     use HasFactory;
     protected $fillable = ['nama'];
+
+    public function barang(){
+        return $this->hasMany(Barang::class,'id','id_barang');
+    }
 }

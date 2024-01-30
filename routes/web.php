@@ -4,6 +4,7 @@ use App\Http\Controllers\AksesController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\Categori;
 use App\Http\Controllers\CategoriController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage.index');
-});
+Route::get('/', [LandingPageController::class,'index'])->name('landing');
 
 Route::get('/login',function(){
     return view('login.login');
