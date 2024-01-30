@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AksesController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\Categori;
+use App\Http\Controllers\CategoriController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +32,13 @@ Route::get('/register',function(){
     return view('login.register');
 });
 
+Route::post('/register/store',[LoginController::class,'register'])
+->name('login.register.store');
+Route::post('/login', [LoginController::class,'login'])
+->name('login.login');
+Route::get('/logout',[LoginController::class,'logout'])
+->name('logout');
+
 Route::get('/forget',function(){
     return view('login.forget');
 });
@@ -49,3 +60,5 @@ Route::DELETE('data/petugas/delete/{id}',[UserController::class,'destroy'])->nam
 
 Route::resource('data/akses',AksesController::class);
 Route::resource('data/role',RoleController::class);
+Route::resource('data/barang',BarangController::class);
+Route::resource('data/categori',CategoriController::class);

@@ -16,7 +16,7 @@
                      alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block">Alexander Pierce</a>
+                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
              </div>
          </div>
 
@@ -74,8 +74,14 @@
                                 <p>Data Role</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href=" {{route('categori.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Kategori</p>
+                            </a>
+                        </li>
                          <li class="nav-item">
-                             <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                             <a href=" {{route('barang.index')}}" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Data Barang</p>
                              </a>
@@ -99,8 +105,17 @@
                       </p>
                   </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link ">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Logout
+                    </p>
+                </a>
+              </li>
              </ul>
          </nav>
+         
          <!-- /.sidebar-menu -->
      </div>
      <!-- /.sidebar -->

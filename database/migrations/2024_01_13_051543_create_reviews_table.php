@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_barang');
             $table->text('keterangan');
             $table->integer('bintang');
             $table->timestamps();
+
+            $table->foreign('id_barang')->references('id')->on('barangs');
         });
     }
 

@@ -70,7 +70,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Role::findOrFail($id);
+
+        $validasi = $request->validate([
+                'id_user' => 'required',
+                'id_akses' => 'required',
+            ]);
+        
+        $data->update($validasi);
+        return redirect('/data/role')->with('success','Record updated sucessfuly !');
     }
 
     /**
@@ -78,6 +86,9 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Role::findOrFail($id);
+        
+        $data->delete();
+        return redirect('/data/role')->with('success','Record deleted sucessfuly !');
     }
 }

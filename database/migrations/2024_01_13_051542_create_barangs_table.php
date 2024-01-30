@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_review');
             $table->unsignedBigInteger('id_categori');
             $table->string('nama_barang');
             $table->string('harga');
@@ -23,7 +22,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_review')->references('id')->on('reviews');
             $table->foreign('id_categori')->references('id')->on('categoris');
         });
     }

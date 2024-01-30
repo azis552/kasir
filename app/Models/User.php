@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Role::class,'id_user','id');
     }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class,'id_users','id');
+    }
 }

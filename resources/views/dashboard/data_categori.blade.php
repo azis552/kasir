@@ -1,6 +1,6 @@
 @extends('dashboard.master')
 
-@section('title', 'Data Barang')
+@section('title', 'Data Akses')
 
 @section('content')
     <div class="content-wrapper">
@@ -38,15 +38,13 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <a href="{{ route('data.petugas.create') }}" type="button" class="btn btn-warning mb-2">Tambah
-                            Petugas</a>
+                        <a href="{{ route('categori.create') }}" type="button" class="btn btn-warning mb-2">Tambah
+                            Kategori</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Petugas</th>
-                                    <th>Harga</th>
+                                    <th>Kategori</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -55,15 +53,13 @@
                                 @foreach ($data as $i)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $i->nama_barang}}</td>
-                                    <td>{{ $i->user->name }}</td>
-                                    <td>{{ $i->harga }}</td>
+                                    <td>{{ $i->nama}}</td>
                                     <td>
-                                        <form action="{{ route('data.petugas.delete', $i->id) }}"
+                                        <form action="{{ route('categori.destroy', $i->id) }}"
                                             method="post" class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href=" {{ route('data.petugas.edit', $i->id) }} "
+                                            <a href=" {{ route('categori.edit', $i->id) }} "
                                                  class="btn btn-warning" type="button">Edit</a>
                                             <button type="submit" class="btn btn-danger">
                                                 Delete</button>

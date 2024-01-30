@@ -1,6 +1,6 @@
 @extends('dashboard.master')
 
-@section('title', 'Data Role')
+@section('title', 'Data Kategori')
 
 @section('content')
 <div class="content-wrapper">
@@ -32,28 +32,11 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a href="{{ route('role.index') }}" type="button" class="btn btn-warning mb-2">Kembali</a>
-                    <form action="{{ route('role.update',$data->id) }}" method="post">
+                    <a href="{{ route('categori.index') }}" type="button" class="btn btn-warning mb-2">Kembali</a>
+                    <form action="{{ route('categori.store') }}" method="post">
                         @csrf
-                        @method('PUT')
-                        <label for="">PETUGAS</label>
-                        <select name="id_user" id="petugas" class="form-control">
-                            <option value="">Nama Petugas</option>
-                            @foreach ($user as $i)
-                                <option value="{{ $i->id == $data->id_user  ? $data->id_user : $i->id}}" 
-                                    {{ $i->id == $data->id_user  ? 'selected' : '' }} >
-                                    {{ $i->id == $data->id_user  ? $i->name : $i->name  }} </option>
-                            @endforeach
-                        </select>
-                        <label for="">AKSES</label>
-                        <select name="id_akses" id="akses" class="form-control">
-                            <option value="">Nama Menu</option>
-                            @foreach ($akses as $i)
-                                <option value="{{ $i->id == $data->id_akses  ? $data->id_akses : $i->id}}" 
-                                    {{ $i->id == $data->id_akses  ? 'selected' : '' }} >
-                                    {{ $i->id == $data->id_akses  ? $i->menu : $i->menu  }}</option>
-                            @endforeach
-                        </select>
+                        <label for="">Kategori</label>
+                        <input type="text" class="form-control" name="nama">
                         <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                     </form>
                 </div>
