@@ -17,77 +17,22 @@
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
                                     <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-2.jpg') }}"
+                                        <img id="photo" src=""
                                             alt="product image">
                                     </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-1.jpg') }}"
-                                            alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-3.jpg') }}"
-                                            alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-4.jpg') }}"
-                                            alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-5.jpg') }}"
-                                            alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-6.jpg') }}"
-                                            alt="product image">
-                                    </figure>
-                                    <figure class="border-radius-10">
-                                        <img src="{{ asset('evara/assets/imgs/shop/product-16-7.jpg') }}"
-                                            alt="product image">
-                                    </figure>
+                                    
                                 </div>
-                                <!-- THUMBNAILS -->
-                                <div class="slider-nav-thumbnails pl-15 pr-15">
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-3.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-4.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-5.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-6.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-7.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-8.jpg') }}"
-                                            alt="product image"></div>
-                                    <div><img src="{{ asset('evara/assets/imgs/shop/thumbnail-9.jpg') }}"
-                                            alt="product image"></div>
-                                </div>
+                               
                             </div>
                             <!-- End Gallery -->
-                            <div class="social-icons single-share">
-                                <ul class="text-grey-5 d-inline-block">
-                                    <li><strong class="mr-10">Share this:</strong></li>
-                                    <li class="social-facebook"><a href="#"><img
-                                                src="{{ asset('evara/assets/imgs/theme/icons/icon-facebook.svg') }}"
-                                                alt=""></a></li>
-                                    <li class="social-twitter"> <a href="#"><img
-                                                src="{{ asset('evara/assets/imgs/theme/icons/icon-twitter.svg') }}"
-                                                alt=""></a></li>
-                                    <li class="social-instagram"><a href="#"><img
-                                                src="{{ asset('evara/assets/imgs/theme/icons/icon-instagram.svg') }}"
-                                                alt=""></a></li>
-                                    <li class="social-linkedin"><a href="#"><img
-                                                src="{{ asset('evara/assets/imgs/theme/icons/icon-pinterest.svg') }}"
-                                                alt=""></a></li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">
-                                <h3 class="title-detail mt-30">Colorful Pattern Shirts HD450</h3>
+                                <h3 class="title-detail mt-30" id="barang">Colorful Pattern Shirts HD450</h3>
                                 <div class="product-detail-rating">
                                     <div class="pro-details-brand">
-                                        <span> Brands: <a href="shop-grid-right.html">Bootstrap</a></span>
+                                        <span> Categori: <a href="shop-grid-right.html" id="categori"></a></span>
                                     </div>
                                     <div class="product-rate-cover text-end">
                                         <div class="product-rate d-inline-block">
@@ -99,46 +44,10 @@
                                 </div>
                                 <div class="clearfix product-price-cover">
                                     <div class="product-price primary-color float-left">
-                                        <ins><span class="text-brand">$120.00</span></ins>
-                                        <ins><span class="old-price font-md ml-15">$200.00</span></ins>
-                                        <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                        <ins><span class="text-brand" id="harga"></span></ins>
                                     </div>
                                 </div>
                                 <div class="bt-1 border-color-1 mt-15 mb-15"></div>
-                                <div class="short-desc mb-30">
-                                    <p class="font-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Aliquam rem officia, corrupti reiciendis minima nisi modi,!</p>
-                                </div>
-
-                                <div class="attr-detail attr-color mb-15">
-                                    <strong class="mr-10">Color</strong>
-                                    <ul class="list-filter color-filter">
-                                        <li><a href="#" data-color="Red"><span
-                                                    class="product-color-red"></span></a></li>
-                                        <li><a href="#" data-color="Yellow"><span
-                                                    class="product-color-yellow"></span></a></li>
-                                        <li class="active"><a href="#" data-color="White"><span
-                                                    class="product-color-white"></span></a></li>
-                                        <li><a href="#" data-color="Orange"><span
-                                                    class="product-color-orange"></span></a></li>
-                                        <li><a href="#" data-color="Cyan"><span
-                                                    class="product-color-cyan"></span></a></li>
-                                        <li><a href="#" data-color="Green"><span
-                                                    class="product-color-green"></span></a></li>
-                                        <li><a href="#" data-color="Purple"><span
-                                                    class="product-color-purple"></span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="attr-detail attr-size">
-                                    <strong class="mr-10">Size</strong>
-                                    <ul class="list-filter size-filter font-small">
-                                        <li><a href="#">S</a></li>
-                                        <li class="active"><a href="#">M</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
-                                </div>
                                 <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                 <div class="detail-extralink">
                                     <div class="detail-qty border radius">
@@ -154,12 +63,9 @@
                                             href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                 </div>
-                                <ul class="product-meta font-xs color-grey mt-50">
-                                    <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                    <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a
-                                            href="#" rel="tag">Women</a>, <a href="#"
-                                            rel="tag">Dress</a> </li>
-                                    <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span>
+                                <ul class="product-meta font-xs color-grey mt-20">
+                                    <li>Availability:<span class="in-stock text-success ml-5" id="stok"></span>
+                                    <li>Terjual:<span class="in-stock text-success ml-5" id="terjual"></span>
                                     </li>
                                 </ul>
                             </div>
@@ -1051,13 +957,11 @@
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
-                                <li><a href="shop-grid-right.html">Shoes & Bags</a></li>
-                                <li><a href="shop-grid-right.html">Blouses & Shirts</a></li>
-                                <li><a href="shop-grid-right.html">Dresses</a></li>
-                                <li><a href="shop-grid-right.html">Swimwear</a></li>
-                                <li><a href="shop-grid-right.html">Beauty</a></li>
-                                <li><a href="shop-grid-right.html">Jewelry & Watch</a></li>
-                                <li><a href="shop-grid-right.html">Accessories</a></li>
+                                @foreach ($categori as $item)
+                                    <li><a href="shop-grid-right.html">{{ $item->nama }}</a></li>
+                                @endforeach
+                                
+                               
                             </ul>
                         </div>
                         <div class="widget-category mb-30">
@@ -1132,10 +1036,17 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-eye"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                        href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                        data-bs-toggle="modal" id="show" data-bs-target="#quickViewModal"
+                                                        
+                                                        data-namabarang="{{ $i->nama_barang }}"
+                                                        data-photo="{{ asset('storage/'.$i->photo) }}"
+                                                        data-harga="{{ $i->harga }}"
+                                                        data-stok="{{ $i->stok }}"
+                                                        data-categori="{{ $i->categori->nama }}"
+                                                        data-terjual="{{ $i->jumlah_terjual }}"
+                                                        ><i
+                                                            class="fa-solid fa-basket-shopping"></i></a>
+                                                    
                                                     
                                                 </div>
                                                 <div class="product-badges product-badges-position product-badges-mrg">

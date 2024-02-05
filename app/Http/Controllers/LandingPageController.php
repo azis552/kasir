@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Categori;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -13,7 +14,8 @@ class LandingPageController extends Controller
     public function index()
     {
         $barang = Barang::all();
-        return view('landingpage.index',['barang'=>$barang]);
+        $categori = Categori::all();
+        return view('landingpage.index',['barang'=>$barang,'categori'=>$categori]);
     }
 
     /**

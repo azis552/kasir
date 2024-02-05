@@ -5,8 +5,7 @@
                 <div class="col-lg-7 mb-md-3 mb-lg-0">
                     <div class="row align-items-center">
                         <div class="col flex-horizontal-center">
-                            <img class="icon-email"
-                                src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-email.svg"
+                            <img class="icon-email" src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-email.svg"
                                 alt="">
                             <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
                         </div>
@@ -19,8 +18,7 @@
                 <div class="col-lg-5">
                     <!-- Subscribe Form -->
                     <form class="form-subcriber d-flex wow fadeIn animated">
-                        <input type="email" class="form-control bg-white font-small"
-                            placeholder="Enter your email">
+                        <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
                         <button class="btn bg-dark text-white" type="submit">Subscribe</button>
                     </form>
                     <!-- End Subscribe Form -->
@@ -49,20 +47,15 @@
                         </p>
                         <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                            <a href="#"><img
-                                    src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-facebook.svg"
+                            <a href="#"><img src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-facebook.svg"
                                     alt=""></a>
-                            <a href="#"><img
-                                    src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-twitter.svg"
+                            <a href="#"><img src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-twitter.svg"
                                     alt=""></a>
-                            <a href="#"><img
-                                    src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-instagram.svg"
+                            <a href="#"><img src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-instagram.svg"
                                     alt=""></a>
-                            <a href="#"><img
-                                    src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-pinterest.svg"
+                            <a href="#"><img src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-pinterest.svg"
                                     alt=""></a>
-                            <a href="#"><img
-                                    src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-youtube.svg"
+                            <a href="#"><img src="{{ asset('evara') }}/assets/imgs/theme/icons/icon-youtube.svg"
                                     alt=""></a>
                         </div>
                     </div>
@@ -96,18 +89,15 @@
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated">
                                 <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
-                                        src="{{ asset('evara') }}/assets/imgs/theme/app-store.jpg"
-                                        alt=""></a>
+                                        src="{{ asset('evara') }}/assets/imgs/theme/app-store.jpg" alt=""></a>
                                 <a href="#" class="hover-up"><img
-                                        src="{{ asset('evara') }}/assets/imgs/theme/google-play.jpg"
-                                        alt=""></a>
+                                        src="{{ asset('evara') }}/assets/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                             <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
                             <img class="wow fadeIn animated"
-                                src="{{ asset('evara') }}/assets/imgs/theme/payment-method.png"
-                                alt="">
+                                src="{{ asset('evara') }}/assets/imgs/theme/payment-method.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -120,8 +110,8 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-lg-6">
-                <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong
-                        class="text-brand">Evara</strong> - HTML Ecommerce Template </p>
+                <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong>
+                    - HTML Ecommerce Template </p>
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
@@ -171,6 +161,26 @@
 <!-- Template  JS -->
 <script src="{{ asset('evara/assets/js/main.js?v=3.4') }}"></script>
 <script src="{{ asset('evara/assets/js/shop.js?v=3.4') }}"></script>
+<script src="https://kit.fontawesome.com/69317c8a5a.js" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('#show').on('click', function() {
+            var namaBarang = $(this).data('namabarang');
+            var photo = $(this).data('photo');
+            var harga = $(this).data('harga');
+            var stok = $(this).data('stok');
+            var terjual = $(this).data('terjual');
+            var categori = $(this).data('categori');
+            $("#quickViewModal #barang").text(namaBarang);
+            $("#quickViewModal #harga").text(harga);
+            $("#quickViewModal #stok").text(stok);
+            $("#quickViewModal #terjual").text(terjual);
+            $("#quickViewModal #categori").text(categori);
+            $("#quickViewModal #photo").attr('src', photo);
+            
+        });
+    });
+</script>
 </body>
 
 </html>
