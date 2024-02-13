@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\DetailPenjualan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -27,7 +31,31 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $timestamp = Carbon::now()->format('Y-m-d H:i:s.u');
+    if ($request->session()->has('cart')) {
+        // Jika session belum ada, buat session baru untuk keranjang belanja
+         $request->session()->put('cart', $timestamp);
+    }
+    $sesi = $request->session()->get('cart');
+    // Ambil data barang yang dikirim dari form
+    $barangId = $request->input('id_barang');
+    $jumlah = $request->input('qty_val');
+
+    // pencarian harga
+    $barang = Barang::findOrFail($barangId);
+    $harga = $barang->harga;
+    // total harga
+    $total = $harga*$jumlah;
+
+    $keranjang = new DetailPenjualan();
+    $keranjang->id_barang = $barangId;
+    $keranjang->jumlah_barang = $jumlah;
+    $keranjang->total = $total;
+    $keranjang->sesi = $sesi;
+    $keranjang->save();
+
+    // Beri respons JSON untuk AJAX
+    return response()->json(['success' => true]);
     }
 
     /**

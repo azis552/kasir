@@ -56,11 +56,11 @@
                                         <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                     </div>
                                     <div class="product-extra-link2">
-                                        <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up"
-                                            href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <form action="#" id="form-cart">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="id_barang" id="id_barang">
+                                            <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                        </form>
                                     </div>
                                 </div>
                                 <ul class="product-meta font-xs color-grey mt-20">
@@ -1037,7 +1037,7 @@
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn hover-up"
                                                         data-bs-toggle="modal" id="show" data-bs-target="#quickViewModal"
-                                                        
+                                                        data-id="{{ $i->id }}"
                                                         data-namabarang="{{ $i->nama_barang }}"
                                                         data-photo="{{ asset('storage/'.$i->photo) }}"
                                                         data-harga="{{ $i->harga }}"
@@ -1483,10 +1483,6 @@
                                                     <a aria-label="Quick view" class="action-btn hover-up"
                                                         data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
                                                             class="fi-rs-eye"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                        href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn hover-up"
-                                                        href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 <div
                                                     class="product-badges product-badges-position product-badges-mrg">

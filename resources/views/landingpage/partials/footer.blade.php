@@ -165,12 +165,14 @@
 <script>
     $(document).ready(function() {
         $('#show').on('click', function() {
+            var id = $(this).data('id');
             var namaBarang = $(this).data('namabarang');
             var photo = $(this).data('photo');
             var harga = $(this).data('harga');
             var stok = $(this).data('stok');
             var terjual = $(this).data('terjual');
             var categori = $(this).data('categori');
+            $("#quickViewModal #id_barang").val(id);
             $("#quickViewModal #barang").text(namaBarang);
             $("#quickViewModal #harga").text(harga);
             $("#quickViewModal #stok").text(stok);
@@ -180,6 +182,35 @@
             
         });
     });
+</script>
+<script>
+    $(document).ready(function() {
+    $('#form-cart').submit(function(event) {
+        event.preventDefault();
+        
+        var formData = $(this).serialize();
+        
+        // Mengambil nilai dari elemen <span> dengan kelas 'qty-val'
+        var qtyVal = $('.qty-val').text();
+
+        // Menambahkan nilai qtyVal ke dalam data yang akan dikirimkan
+        formData += '&qty_val=' + qtyVal;
+        
+        $.ajax({
+            url: "{{ route('penjualan.store') }}", // Sesuaikan dengan route Anda
+            method: "POST",
+            data: formData,
+            success: function(response) {
+                console.log(response);
+                // Tambahkan logika lain di sini, misalnya menampilkan pesan sukses
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                // Tambahkan logika untuk menangani kesalahan di sini
+            }
+        });
+    });
+});
 </script>
 </body>
 
