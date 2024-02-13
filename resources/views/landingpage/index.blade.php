@@ -25,7 +25,15 @@
                                
                             </div>
                             <!-- End Gallery -->
-                            
+                            <!-- Alert Bootstrap untuk sukses -->
+<div id="success-alert" class="alert alert-success d-none" role="alert">
+    <span id="success-message"></span>
+</div>
+
+<!-- Alert Bootstrap untuk error -->
+<div id="error-alert" class="alert alert-danger d-none" role="alert">
+    <span id="error-message"></span>
+</div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">

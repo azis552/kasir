@@ -202,10 +202,19 @@
             data: formData,
             success: function(response) {
                 console.log(response);
+                $('#success-alert').removeClass('d-none');
+                $('#success-message').text('Barang berhasil ditambahkan ke keranjang belanja.');
+                
+                // Sembunyikan alert setelah beberapa detik (opsional)
+                setTimeout(function() {
+                    $('#success-alert').addClass('d-none');
+                }, 5000); // Sesuaikan dengan kebutuhan Anda
                 // Tambahkan logika lain di sini, misalnya menampilkan pesan sukses
             },
             error: function(xhr, status, error) {
                 console.error(error);
+                $('#error-alert').removeClass('d-none');
+                $('#error-message').text('Terjadi kesalahan. Silakan coba lagi.');
                 // Tambahkan logika untuk menangani kesalahan di sini
             }
         });

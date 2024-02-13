@@ -32,9 +32,9 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
     $timestamp = Carbon::now()->format('Y-m-d H:i:s.u');
-    if ($request->session()->has('cart')) {
+    if (!$request->session()->has('cart')) {
         // Jika session belum ada, buat session baru untuk keranjang belanja
-         $request->session()->put('cart', $timestamp);
+         $request->session()->put('cart', $timestamp,30);
     }
     $sesi = $request->session()->get('cart');
     // Ambil data barang yang dikirim dari form
