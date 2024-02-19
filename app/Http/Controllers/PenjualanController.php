@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
-
+    public function keranjang()
+    {
+        @$key = session('cart');
+        $penjualan = DetailPenjualan::where('sesi','=',$key)->get();
+        return view('landingpage.keranjang',['penjualan'=>$penjualan]);
+    }
     /**
      * Display a listing of the resource.
      */

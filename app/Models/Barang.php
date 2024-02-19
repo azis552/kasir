@@ -18,4 +18,8 @@ class Barang extends Model
     public function categori(){
         return $this->belongsTo(Categori::class,'id_categori','id');
     }
+    public function barang()
+    {
+        return $this->hashMany(DetailPenjualan::class,'id','id_barang');
+    }
 }

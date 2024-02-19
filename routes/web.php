@@ -63,3 +63,4 @@ Route::resource('data/role',RoleController::class);
 Route::resource('data/barang',BarangController::class);
 Route::resource('data/categori',CategoriController::class);
 Route::resource('penjualan',PenjualanController::class);
+Route::get('keranjang',[PenjualanController::class,'keranjang'])->name('keranjang');

@@ -164,7 +164,7 @@
 <script src="https://kit.fontawesome.com/69317c8a5a.js" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        $('#show').on('click', function() {
+        $('.tambahkeranjang').on('click', function() {
             var id = $(this).data('id');
             var namaBarang = $(this).data('namabarang');
             var photo = $(this).data('photo');
