@@ -696,16 +696,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($penjualan as $i)
-                                        <tr>
-                                            <td class="image"><img src="{{ asset('storage/'.$i->barang->photo) }}" alt="#"></td>
-                                            <td>{{ $i->barang->nama_barang }}</td>
-                                            <td>{{ $i->jumlah_barang }}</td>
-                                            <td>{{ $i->total }}</td>
-                                            <td>{{ $i->total }}</td>
-                                            <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                                        </tr>
-                                    @endforeach
+                                    @if (session('cart') != null)
+                                    @php
+                                        $j= 0;
+                                    @endphp
+                                        @foreach ($penjualan as $i)
+                                            @php
+                                            
+                                                $j += intval($i->total);
+                                            @endphp
+                                            
+                                            <tr>
+                                                <td class="image"><img src="{{ asset('storage/'.$i->barang->photo) }}" alt="#"></td>
+                                                <td>{{ $i->barang->nama_barang }}</td>
+                                                <td>{{ $i->barang->harga }}</td>
+                                                <td>{{ $i->jumlah_barang }}</td>
+                                                <td>{{ $i->total }}</td>
+                                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -721,21 +732,14 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">$240.00</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="cart_total_label">Shipping</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
-                                                </tr>
-                                                <tr>
                                                     <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">$240.00</span></strong></td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ $j }}</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <a href="#" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                    <a href="{{ route('batal_pesan') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Batal</a>
                                 </div>
                             </div>
                         </div>

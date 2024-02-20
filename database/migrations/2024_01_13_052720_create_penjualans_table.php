@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('tanggal_penjualan');
             $table->string('total_harga');
             $table->enum('status',['keranjang','pesan','bayar','batal']);
+
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');

@@ -12,8 +12,19 @@ class PenjualanController extends Controller
     public function keranjang()
     {
         @$key = session('cart');
-        $penjualan = DetailPenjualan::where('sesi','=',$key)->get();
-        return view('landingpage.keranjang',['penjualan'=>$penjualan]);
+        
+        if($key==null){
+            return view('landingpage.keranjang');
+        }else{
+            $penjualan = DetailPenjualan::where('sesi','=',$key)->get();
+            return view('landingpage.keranjang',['penjualan'=>$penjualan]);
+        }
+        
+    }
+    public function batal_pesan(Request $request)
+    {
+        $request->session()->forget('cart');
+        return view('landingpage.keranjang');
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +50,7 @@ class PenjualanController extends Controller
     $timestamp = Carbon::now()->format('Y-m-d H:i:s.u');
     if (!$request->session()->has('cart')) {
         // Jika session belum ada, buat session baru untuk keranjang belanja
-         $request->session()->put('cart', $timestamp,30);
+         $request->session()->put('cart', $timestamp,1);
     }
     $sesi = $request->session()->get('cart');
     // Ambil data barang yang dikirim dari form

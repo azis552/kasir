@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('jumlah_barang');
             $table->string('total');
             $table->string('sesi');
+            $table->string('nama_pemesan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_penjualan')->references('id')->on('penjualans');
