@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_user')->nullable();
             $table->date('tanggal_penjualan');
             $table->string('total_harga');
             $table->enum('status',['keranjang','pesan','bayar','batal']);

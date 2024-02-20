@@ -65,3 +65,4 @@ Route::resource('data/categori',CategoriController::class);
 Route::resource('penjualan',PenjualanController::class);
 Route::get('keranjang',[PenjualanController::class,'keranjang'])->name('keranjang');
 Route::get('batal_pesan',[PenjualanController::class,'batal_pesan'])->name('batal_pesan');
+Route::post('checkout',[PenjualanController::class,'checkout'])->name('checkout');

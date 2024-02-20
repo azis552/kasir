@@ -3,12 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Categori;
 use App\Models\DetailPenjualan;
+use App\Models\Penjualan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
+
+    public function checkout(Request $request)
+    {
+        $timestamp = Carbon::now();
+        $nama_pemesan = $request->input('nama_pemesan');
+        $total_pesanan = $request->input('total');
+        $key = session('cart');
+        $pemesanan = [
+            'tanggal_penjualan' => $timestamp,
+            'total_harga' => $total_pesanan,
+            'status' => 'pesan'
+        ];
+        $create_penjualan = Penjualan::create($pemesanan);
+        $id_penjualan = $create_penjualan->id;
+        $detail_pemesanan = [
+            'id_penjualan' => $id_penjualan,
+            'nama_pemesan' => $nama_pemesan,
+        ];
+        $data = DetailPenjualan::where('sesi','=',$key);
+        $data->update($detail_pemesanan);
+        $request->session()->forget('cart');
+        return redirect('penjualan')->with('success','Pesanan Berhasil Silahkan Ke Kasir');
+
+
+    }
     public function keranjang()
     {
         @$key = session('cart');
@@ -31,7 +58,9 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        
+        $barang = Barang::all();
+        $categori = Categori::all();
+        return view('landingpage.index',['barang'=>$barang,'categori'=>$categori]);
     }
 
     /**

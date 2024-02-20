@@ -733,13 +733,19 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ $j }}</span></strong></td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ @$j }}</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="#" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
-                                    <a href="{{ route('batal_pesan') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Batal</a>
+                                    <form action="{{ route('checkout') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="total" value="{{ @$j }}">
+                                        <input type="text" class="form-control mb-2" required placeholder="Masukkan Nama Mu" name="nama_pemesan">
+                                        <button type="submit" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Checkout</button>
+                                        <a href="{{ route('batal_pesan') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Batal</a>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>

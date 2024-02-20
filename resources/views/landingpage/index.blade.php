@@ -26,6 +26,7 @@
                             </div>
                             <!-- End Gallery -->
                             <!-- Alert Bootstrap untuk sukses -->
+
 <div id="success-alert" class="alert alert-success d-none" role="alert">
     <span id="success-message"></span>
 </div>
@@ -637,6 +638,11 @@
             </div>
         </div>
     </header>
+    @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
     <div class="mobile-header-active mobile-header-wrapper-style">
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
