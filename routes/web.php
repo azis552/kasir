@@ -8,6 +8,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,3 +67,4 @@ Route::resource('penjualan',PenjualanController::class);
 Route::get('keranjang',[PenjualanController::class,'keranjang'])->name('keranjang');
 Route::get('batal_pesan',[PenjualanController::class,'batal_pesan'])->name('batal_pesan');
 Route::post('checkout',[PenjualanController::class,'checkout'])->name('checkout');
+Route::get('transaksi',[TransaksiController::class,'index'])->name('transaksi.index');
