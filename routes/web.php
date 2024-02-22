@@ -68,3 +68,4 @@ Route::get('keranjang',[PenjualanController::class,'keranjang'])->name('keranjan
 Route::get('batal_pesan',[PenjualanController::class,'batal_pesan'])->name('batal_pesan');
 Route::post('checkout',[PenjualanController::class,'checkout'])->name('checkout');
 Route::get('transaksi',[TransaksiController::class,'index'])->name('transaksi.index');
+Route::get('transaksi/{id}/detail',[TransaksiController::class,'detail_transaksi'])->name('transaksi.detail');

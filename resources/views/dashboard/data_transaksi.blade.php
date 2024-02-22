@@ -13,7 +13,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Data Master</a></li>
+                            <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
                             <li class="breadcrumb-item active">@yield('title')</li>
                         </ol>
                     </div><!-- /.col -->
@@ -38,14 +38,13 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <a href="{{ route('data.petugas.create') }}" type="button" class="btn btn-warning mb-2">Tambah
-                            Petugas</a>
+                        
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>Jumlah Barang</th>
+                                    <th>Tanggal</th>
                                     <th>Total Transaksi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -55,7 +54,7 @@
                                 @foreach ($data as $i)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $i->nama_pemesan}}</td>
+                                    <td>{{ $i->detail_penjualan->nama_pemesan}}</td>
                                     <td>{{ $i->tanggal_penjualan }}</td>
                                     <td>{{ $i->total_harga }}</td>
                                     <td>
@@ -63,10 +62,10 @@
                                             method="post" class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <a href=" {{ route('data.petugas.edit', $i->id) }} "
-                                                 class="btn btn-warning" type="button">Edit</a>
+                                            <a href=" {{ route('transaksi.detail', $i->id) }} "
+                                                 class="btn btn-warning" type="button">Bayar</a>
                                             <button type="submit" class="btn btn-danger">
-                                                Delete</button>
+                                                Batal</button>
                                         </form>
                                     </td>
                                 </tr>

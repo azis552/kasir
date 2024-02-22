@@ -17,7 +17,8 @@ return new class extends Migration
             $table->date('tanggal_penjualan');
             $table->string('total_harga');
             $table->enum('status',['keranjang','pesan','bayar','batal']);
-
+            $table->string('total_bayar')->nullable();
+            $table->string('kembalian')->nullable();
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');
