@@ -69,3 +69,5 @@ Route::get('batal_pesan',[PenjualanController::class,'batal_pesan'])->name('bata
 Route::post('checkout',[PenjualanController::class,'checkout'])->name('checkout');
 Route::get('transaksi',[TransaksiController::class,'index'])->name('transaksi.index');
 Route::get('transaksi/{id}/detail',[TransaksiController::class,'detail_transaksi'])->name('transaksi.detail');
+Route::PUT('transaksi/bayar/{id}',[TransaksiController::class,'bayar'])->name('transaksi.bayar');
+Route::get('transaksi/terbayar',[TransaksiController::class,'sudah_bayar'])->name('transaksi.terbayar');

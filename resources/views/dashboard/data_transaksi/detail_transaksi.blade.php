@@ -38,7 +38,6 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -66,13 +65,16 @@
                                     <td class="text-center">{{ $i->total }}</td>
                                 </tr>
                                 @endforeach
+                                <form action="{{ route('transaksi.bayar',$id) }}" method="post" >
+                                    @csrf
+                                    @method('PUT')
                                 <tr>
                                     <td class="text-right" colspan="3">Total</td>
                                     <td class="text-center" id="total_harga">{{ $total }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Diskon</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id="diskon"></td>
+                                    <td class="text-center"><input class="form-control text-center" type="number" name="diskon" id="diskon"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Total Tagihan</td>
@@ -80,12 +82,17 @@
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Bayar</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="bayar" id="bayar"></td>
+                                    <td class="text-center"><input class="form-control text-center" type="number" name="bayar" id="bayar"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Kembalian</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="kembalian" id="kembalian"></td>
+                                    <td class="text-center"><input class="form-control text-center" type="number" name="kembalian" id="kembalian"></td>
                                 </tr>
+                                <tr>
+                                    <td class="text-right" colspan="3"></td>
+                                    <td class="text-center"><button type="simpan" id="simpan" class="btn btn-warning">Simpan</button></td>
+                                </tr>
+                            </form>
                             </tbody>
                         </table>
                     </div>

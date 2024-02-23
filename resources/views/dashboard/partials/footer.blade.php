@@ -80,12 +80,9 @@
       $('#bayar').on('input', function() {
           var total = $('#total').val();
           var bayar = $(this).val();
-          var kembalian = total-bayar;
-          if(kembalian<0){
-            alert('diskon tidak boleh lebih besar dari harga');
-          }else{
+          var kembalian = bayar-total;
+          
           $('#kembalian').val(kembalian);
-          }
       });
   });
 </script>
