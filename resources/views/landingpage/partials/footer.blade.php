@@ -179,48 +179,54 @@
             $("#quickViewModal #terjual").text(terjual);
             $("#quickViewModal #categori").text(categori);
             $("#quickViewModal #photo").attr('src', photo);
-            
+
         });
     });
 </script>
 <script>
     $(document).ready(function() {
-    $('#form-cart').submit(function(event) {
-        event.preventDefault();
-        
-        var formData = $(this).serialize();
-        
-        // Mengambil nilai dari elemen <span> dengan kelas 'qty-val'
-        var qtyVal = $('.qty-val').text();
+        $('#form-cart').submit(function(event) {
+            event.preventDefault();
 
-        // Menambahkan nilai qtyVal ke dalam data yang akan dikirimkan
-        formData += '&qty_val=' + qtyVal;
-        
-        $.ajax({
-            url: "{{ route('penjualan.store') }}", // Sesuaikan dengan route Anda
-            method: "POST",
-            data: formData,
-            success: function(response) {
-                console.log(response);
-                $('#success-alert').removeClass('d-none');
-                $('#success-message').text('Barang berhasil ditambahkan ke keranjang belanja.');
-                
-                // Sembunyikan alert setelah beberapa detik (opsional)
-                setTimeout(function() {
-                    $('#success-alert').addClass('d-none');
-                }, 5000); // Sesuaikan dengan kebutuhan Anda
-                // Tambahkan logika lain di sini, misalnya menampilkan pesan sukses
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-                $('#error-alert').removeClass('d-none');
-                $('#error-message').text('Terjadi kesalahan. Silakan coba lagi.');
-                // Tambahkan logika untuk menangani kesalahan di sini
-            }
+            var formData = $(this).serialize();
+
+            // Mengambil nilai dari elemen <span> dengan kelas 'qty-val'
+            var qtyVal = $('.qty-val').text();
+
+            // Menambahkan nilai qtyVal ke dalam data yang akan dikirimkan
+            formData += '&qty_val=' + qtyVal;
+
+            $.ajax({
+                url: "{{ route('penjualan.store') }}", // Sesuaikan dengan route Anda
+                method: "POST",
+                data: formData,
+                success: function(response) {
+                    console.log(response);
+                    $('#success-alert').removeClass('d-none');
+                    $('#success-message').text(
+                        'Barang berhasil ditambahkan ke keranjang belanja.');
+
+                    // Sembunyikan alert setelah beberapa detik (opsional)
+                    setTimeout(function() {
+                        $('#success-alert').addClass('d-none');
+                    }, 5000); // Sesuaikan dengan kebutuhan Anda
+                    // Tambahkan logika lain di sini, misalnya menampilkan pesan sukses
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    $('#error-alert').removeClass('d-none');
+                    $('#error-message').text('Terjadi kesalahan. Silakan coba lagi.');
+                    setTimeout(function() {
+                        $('#error-alert').addClass('d-none');
+                    }, 5000); // Sesuaikan dengan kebutuhan Anda
+                    // Tambahkan logika untuk menangani kesalahan di sini
+                }
+            });
         });
     });
-});
 </script>
+
+
 </body>
 
 </html>

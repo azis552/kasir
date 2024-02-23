@@ -68,23 +68,23 @@
                                 @endforeach
                                 <tr>
                                     <td class="text-right" colspan="3">Total</td>
-                                    <td class="text-center">{{ $total }}</td>
+                                    <td class="text-center" id="total_harga">{{ $total }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Diskon</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id=""></td>
+                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id="diskon"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Total Tagihan</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id=""></td>
+                                    <td class="text-center"><input class="form-control text-center" type="number" name="total" id="total"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Bayar</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id=""></td>
+                                    <td class="text-center"><input class="form-control" type="number" name="bayar" id="bayar"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Kembalian</td>
-                                    <td class="text-center"><input class="form-control" type="number" name="diskon" id=""></td>
+                                    <td class="text-center"><input class="form-control" type="number" name="kembalian" id="kembalian"></td>
                                 </tr>
                             </tbody>
                         </table>

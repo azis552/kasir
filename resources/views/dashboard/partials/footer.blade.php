@@ -63,3 +63,29 @@
     });
   });
 </script>
+<script>
+  $(document).ready(function() {
+      var total_harga = $("#total_harga").text();
+      console.log(total_harga);
+      $("#total").val(total_harga);
+      $('#diskon').on('input', function() {
+          var diskon = $(this).val();
+          var harga_akhir = total_harga-diskon;
+          if(harga_akhir<0){
+            alert('diskon tidak boleh lebih besar dari harga');
+          }else{
+          $('#total').val(harga_akhir);
+          }
+      });
+      $('#bayar').on('input', function() {
+          var total = $('#total').val();
+          var bayar = $(this).val();
+          var kembalian = total-bayar;
+          if(kembalian<0){
+            alert('diskon tidak boleh lebih besar dari harga');
+          }else{
+          $('#kembalian').val(kembalian);
+          }
+      });
+  });
+</script>
