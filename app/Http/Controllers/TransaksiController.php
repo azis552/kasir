@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailPenjualan;
 use App\Models\Penjualan;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,5 +45,18 @@ class TransaksiController extends Controller
         ->orderBy('created_at','desc')
         ->get();
         return view('dashboard.data_transaksi.transaksi_terbayar',['data'=>$data]);
+    }
+    public function nota($id)
+    {
+        $data_pembayaran= Penjualan::where('id','=',$id)
+        ->orderBy('created_at','desc')
+        ->get();
+        $data_barang = DetailPenjualan::where('id_penjualan','=',$id)->get();
+        $data = [
+            'data_pembayaran' => $data_pembayaran,
+            'data_barang' => $data_barang,
+        ];
+        $pdf = FacadePdf::loadView('dashboard.pdf.invoice', $data);
+        return $pdf->download('invoice.pdf');
     }
 }

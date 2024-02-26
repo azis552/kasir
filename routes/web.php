@@ -71,3 +71,4 @@ Route::get('transaksi',[TransaksiController::class,'index'])->name('transaksi.in
 Route::get('transaksi/{id}/detail',[TransaksiController::class,'detail_transaksi'])->name('transaksi.detail');
 Route::PUT('transaksi/bayar/{id}',[TransaksiController::class,'bayar'])->name('transaksi.bayar');
 Route::get('transaksi/terbayar',[TransaksiController::class,'sudah_bayar'])->name('transaksi.terbayar');
+Route::get('transaksi/{id}/pdf',[TransaksiController::class,'nota'])->name('nota.pdf');

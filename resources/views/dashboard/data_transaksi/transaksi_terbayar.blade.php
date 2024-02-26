@@ -58,7 +58,7 @@
                                     <td>{{ $i->tanggal_penjualan }}</td>
                                     <td>{{ $i->total_harga }}</td>
                                     <td>
-                                        <button class="btn btn-primary">Nota</button>
+                                        <a href="{{route('nota.pdf',$i->id)}}" class="btn btn-primary">Nota</a>
                                     </td>
                                 </tr>
                                 @endforeach
