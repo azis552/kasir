@@ -48,6 +48,16 @@ class TransaksiController extends Controller
     }
     public function nota($id)
     {
+    //      // Konfigurasi Dompdf
+    // $options = new Options();
+    // $options->set('isRemoteEnabled', true);
+    // $options->set('defaultFont', 'Arial');
+    
+    // // Set ukuran kertas
+    // $options->set('size', array(0,0,204,650)); // Lebar 80 mm dan panjang 600 mm
+    // $options->set('dpi', 72);
+    // Inisialisasi Dompdf dengan konfigurasi yang ditetapkan
+    // $dompdf = new Dompdf($options);
         $data_pembayaran= Penjualan::where('id','=',$id)
         ->orderBy('created_at','desc')
         ->get();
@@ -56,7 +66,8 @@ class TransaksiController extends Controller
             'data_pembayaran' => $data_pembayaran,
             'data_barang' => $data_barang,
         ];
-        $pdf = FacadePdf::loadView('dashboard.pdf.invoice', $data);
-        return $pdf->download('invoice.pdf');
+        return view('dashboard.pdf.invoice',$data);
+        // $pdf = FacadePdf::loadView('dashboard.pdf.invoice', $data);
+        // return $pdf->download('invoice.pdf');
     }
 }

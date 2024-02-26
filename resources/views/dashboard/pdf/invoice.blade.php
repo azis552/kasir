@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Invoice</title>
+    <style>
+        /* Gaya khusus untuk cetak */
+        @media print {
+            /* Tambahkan gaya cetak khusus di sini */
+        }
+    </style>
 </head>
 <body>
     <table>
@@ -21,12 +27,18 @@
         <tr>
             <th colspan="4"><hr></th>
         </tr>
+        <tr>
+            <th>Nama</th>
+            <th>Qty</th>
+            <th>harga</th>
+            <th>Total</th>
+        </tr>
         @foreach ($data_barang as $i)
         <tr>
-            <td>{{ $i->barang->nama_barang }}</td>
-            <td>{{ $i->jumlah_barang }}</td>
-            <td>{{ $i->barang->harga }}</td>
-            <td>{{ $i->total }}</td>
+            <td class="text-center">{{ $i->barang->nama_barang }}</td>
+            <td class="text-center">{{ $i->jumlah_barang }}</td>
+            <td class="text-center">{{ $i->barang->harga }}</td>
+            <td class="text-center">{{ $i->total }}</td>
         </tr>
         @endforeach
         <tr>
@@ -61,3 +73,8 @@
     </table>
 </body>
 </html>
+<script>
+    window.onload = function() {
+        window.print(); // Mencetak saat halaman dimuat
+    };
+</script>
