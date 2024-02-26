@@ -65,24 +65,24 @@
 </script>
 <script>
   $(document).ready(function() {
-      var total_harga = $("#total_harga").text();
+      var total_harga = $("#total_harga").text().replace(/\D/g,'');
       console.log(total_harga);
-      $("#total").val(total_harga);
+      $("#total").val(total_harga).toString().replace(/\D/g,'');
       $('#diskon').on('input', function() {
-          var diskon = $(this).val();
+          var diskon = $(this).val().toString().replace(/\D/g,'');
           var harga_akhir = total_harga-diskon;
           if(harga_akhir<0){
             alert('diskon tidak boleh lebih besar dari harga');
           }else{
-          $('#total').val(harga_akhir);
+          $('#total').val(harga_akhir).toString().replace(/\D/g,'');
           }
       });
       $('#bayar').on('input', function() {
-          var total = $('#total').val();
-          var bayar = $(this).val();
+          var total = $('#total').val().toString().replace(/\D/g,'');
+          var bayar = $(this).val().toString().replace(/\D/g,'');
           var kembalian = bayar-total;
           
-          $('#kembalian').val(kembalian);
+          $('#kembalian').val(kembalian).toString().replace(/\D/g,'');
       });
   });
 </script>
