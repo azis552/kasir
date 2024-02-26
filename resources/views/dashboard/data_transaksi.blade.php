@@ -56,7 +56,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $i->detail_penjualan->nama_pemesan}}</td>
                                     <td>{{ $i->tanggal_penjualan }}</td>
-                                    <td>{{ $i->total_harga }}</td>
+                                    <td>{{ formatRupiah($i->total_harga) }}</td>
                                     <td>
                                         <form action="{{ route('data.petugas.delete', $i->id) }}"
                                             method="post" class="delete-form">

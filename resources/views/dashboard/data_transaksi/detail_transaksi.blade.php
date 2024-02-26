@@ -62,7 +62,7 @@
                                     <td class="text-center">{{ $no++ }}</td>
                                     <td class="text-center">{{ $i->barang->nama_barang}}</td>
                                     <td class="text-center">{{ $i->jumlah_barang }}</td>
-                                    <td class="text-center">{{ $i->total }}</td>
+                                    <td class="text-center">{{ formatRupiah($i->total) }}</td>
                                 </tr>
                                 @endforeach
                                 <form action="{{ route('transaksi.bayar',$id) }}" method="post" >
@@ -70,7 +70,7 @@
                                     @method('PUT')
                                 <tr>
                                     <td class="text-right" colspan="3">Total</td>
-                                    <td class="text-center" id="total_harga">{{ $total }}</td>
+                                    <td class="text-center" id="total_harga">{{ formatRupiah($total) }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="3">Diskon</td>

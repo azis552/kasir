@@ -709,9 +709,9 @@
                                             <tr>
                                                 <td class="image"><img src="{{ asset('storage/'.$i->barang->photo) }}" alt="#"></td>
                                                 <td>{{ $i->barang->nama_barang }}</td>
-                                                <td>{{ $i->barang->harga }}</td>
+                                                <td>{{ formatRupiah($i->barang->harga) }}</td>
                                                 <td>{{ $i->jumlah_barang }}</td>
-                                                <td>{{ $i->total }}</td>
+                                                <td>{{ formatRupiah($i->total) }}</td>
                                                 <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
                                             </tr>
                                         @endforeach
@@ -733,7 +733,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ @$j }}</span></strong></td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ formatRupiah(@$j) }}</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>

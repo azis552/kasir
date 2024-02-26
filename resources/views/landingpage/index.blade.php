@@ -1008,7 +1008,7 @@
                                                         data-id="{{ $i->id }}"
                                                         data-namabarang="{{ $i->nama_barang }}"
                                                         data-photo="{{ asset('storage/'.$i->photo) }}"
-                                                        data-harga="{{ $i->harga }}"
+                                                        data-harga="{{ formatRupiah($i->harga) }}"
                                                         data-stok="{{ $i->stok }}"
                                                         data-categori="{{ $i->categori->nama }}"
                                                         data-terjual="{{ $i->jumlah_terjual }}"
@@ -1028,7 +1028,7 @@
                                                 <h2><a href="shop-product-right.html">{{$i->nama_barang}}</a></h2>
                                                 
                                                 <div class="product-price">
-                                                    <span>{{ $i->harga }} </span>
+                                                    <span>{{ formatRupiah($i->harga) }} </span>
                                                 </div>
                                                 <div class="product-action-1 show">
                                                     <a aria-label="Add To Cart" class="action-btn hover-up"

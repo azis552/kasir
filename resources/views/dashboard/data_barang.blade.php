@@ -58,7 +58,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $i->nama_barang}}</td>
                                     <td>{{ $i->user->name }}</td>
-                                    <td>{{ $i->harga }}</td>
+                                    <td>{{ formatRupiah($i->harga) }}</td>
                                     <td> <img src="{{ asset('storage/'.$i->photo) }}" alt="photo" height="100"> </td>
                                     <td>
                                         <form action="{{ route('barang.destroy', $i->id) }}"
