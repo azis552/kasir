@@ -112,7 +112,6 @@ class BarangController extends Controller
         $data = Barang::findOrFail($id);
         // Tambahkan jumlah stok yang baru
         $data->stok += $tambah_stok;
-
         // Simpan perubahan
         $data->save();
         return redirect('/data/barang')

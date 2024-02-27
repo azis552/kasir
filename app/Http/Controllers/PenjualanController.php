@@ -29,6 +29,13 @@ class PenjualanController extends Controller
             'id_penjualan' => $id_penjualan,
             'nama_pemesan' => $nama_pemesan,
         ];
+        $data = DetailPenjualan::where('sesi','=',$key)->get();
+        foreach ($data as $detail) {
+            // Mengurangi stok barang
+            $barang = Barang::find($detail->id_barang);
+            $barang->stok -= $detail->jumlah_barang;
+            $barang->save();
+        }
         $data = DetailPenjualan::where('sesi','=',$key);
         $data->update($detail_pemesanan);
         $request->session()->forget('cart');
