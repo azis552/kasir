@@ -56,9 +56,9 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $i->detail_penjualan->nama_pemesan}}</td>
                                     <td>{{ $i->tanggal_penjualan }}</td>
-                                    <td>{{ $i->total_harga }}</td>
+                                    <td>{{ formatrupiah($i->total_harga) }}</td>
                                     <td>
-                                        <a href="{{route('nota.pdf',$i->id)}}" class="btn btn-primary">Nota</a>
+                                        <a href="{{route('nota.pdf',$i->id)}}" class="btn btn-primary"><i class="nav-icon fas fa-file-invoice"></i> Nota</a>
                                     </td>
                                 </tr>
                                 @endforeach

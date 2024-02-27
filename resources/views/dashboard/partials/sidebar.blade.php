@@ -90,7 +90,7 @@
                  </li>
                  <li class="nav-item">
                      <a href="{{ route('transaksi.index') }}" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
+                        <i class=" nav-icon fas fa-comments-dollar"></i>
                          <p>
                              Transaksi Unpaid
                              
@@ -99,7 +99,7 @@
                  </li>
                  <li class="nav-item">
                     <a href="{{ route('transaksi.terbayar') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-money-check-alt"></i>
                         <p> 
                             Transaksi Paid
                             

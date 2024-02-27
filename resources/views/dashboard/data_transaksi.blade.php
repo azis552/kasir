@@ -63,8 +63,8 @@
                                             @csrf
                                             @method('DELETE')
                                             <a href=" {{ route('transaksi.detail', $i->id) }} "
-                                                 class="btn btn-warning" type="button">Bayar</a>
-                                            <button type="submit" class="btn btn-danger">
+                                                 class="btn btn-warning" type="button"><i class="nav-icon fas fa-cash-register"></i>  Bayar</a>
+                                            <button type="submit" class="btn btn-danger"><i class=" nav-icon fas fa-trash-alt"></i>     
                                                 Batal</button>
                                         </form>
                                     </td>
