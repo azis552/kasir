@@ -61,7 +61,9 @@ Route::DELETE('data/petugas/delete/{id}',[UserController::class,'destroy'])->nam
 
 Route::resource('data/akses',AksesController::class);
 Route::resource('data/role',RoleController::class);
+Route::POST('data/barang/edit',[BarangController::class,'tambah_stok'])->name('tambah_stok');
 Route::resource('data/barang',BarangController::class);
+
 Route::resource('data/categori',CategoriController::class);
 Route::resource('penjualan',PenjualanController::class);
 Route::get('keranjang',[PenjualanController::class,'keranjang'])->name('keranjang');

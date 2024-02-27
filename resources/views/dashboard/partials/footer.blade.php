@@ -65,6 +65,16 @@
 </script>
 <script>
   $(document).ready(function() {
+      $('.tambah_stok').on('click', function() {
+          var id = $(this).data('id');
+          var nama = $(this).data('nama');
+          $("#tambah_stok_modal #id").val(id);
+          $("#tambah_stok_modal #nama_barang").val(nama);
+      });
+  });
+</script>
+<script>
+  $(document).ready(function() {
       var total_harga = $("#total_harga").text().replace(/\D/g,'');
       console.log(total_harga);
       $("#total").val(total_harga).toString().replace(/\D/g,'');

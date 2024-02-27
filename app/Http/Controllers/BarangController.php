@@ -104,4 +104,18 @@ class BarangController extends Controller
         return redirect('/data/barang')
         ->with('success', 'Record deleted successfully!');
     }
+
+    public function tambah_stok(Request $request)
+    {
+        $id = $request->input('id');
+        $tambah_stok = $request->input('tambah_stok');
+        $data = Barang::findOrFail($id);
+        // Tambahkan jumlah stok yang baru
+        $data->stok += $tambah_stok;
+
+        // Simpan perubahan
+        $data->save();
+        return redirect('/data/barang')
+        ->with('success', 'Stok Added successfully!');
+    }
 }
