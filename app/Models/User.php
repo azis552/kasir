@@ -58,4 +58,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Barang::class,'id_user','id');
     }
+
 }

@@ -39,6 +39,11 @@
                  data-accordion="false">
                  <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               @php
+                   $role = Auth::user()->role;
+               @endphp
+               @foreach ($role as $i)
+                @if ($i->id_akses == 1 || $i->id_akses == 2)
                  <li class="nav-item">
                      <a href="pages/widgets.html" class="nav-link ">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -46,7 +51,8 @@
                              Dashboard
                          </p>
                      </a>
-                 </li>
+                 </li>                           
+                 @endif
                 <li class="nav-item {{ Route::is('data.petugas') || Route::is('akses.index') || Route::is('role.index') ? 'menu-open' : '' }} ">
                      <a href="#" class="nav-link">
                          <i class="nav-icon fas fa-copy"></i>
@@ -56,6 +62,7 @@
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
+                        @if ($i->id_akses == 1)
                          <li class="nav-item ">
                              <a href=" {{ route('data.petugas') }} " class="nav-link {{ Route::is('data.petugas')  ? 'active' : '' }}">
                                  <i class="far fa-circle nav-icon"></i>
@@ -74,6 +81,8 @@
                                 <p>Data Role</p>
                             </a>
                         </li>
+                        @endif
+                        @if ($i->id_akses == 1 || $i->id_akses == 2)
                         <li class="nav-item">
                             <a href=" {{route('categori.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -86,8 +95,10 @@
                                  <p>Data Barang</p>
                              </a>
                          </li>
+                         @endif
                      </ul>
                  </li>
+                 @if ($i->id_akses == 1 || $i->id_akses == 2)
                  <li class="nav-item">
                      <a href="{{ route('transaksi.index') }}" class="nav-link">
                         <i class=" nav-icon fas fa-comments-dollar"></i>
@@ -97,6 +108,8 @@
                          </p>
                      </a>
                  </li>
+                 @endif
+                 @if ($i->id_akses == 1 || $i->id_akses == 2)
                  <li class="nav-item">
                     <a href="{{ route('transaksi.terbayar') }}" class="nav-link">
                         <i class="nav-icon fas fa-money-check-alt"></i>
@@ -106,7 +119,8 @@
                         </p>
                     </a>
                 </li>
-                 
+                @endif
+                 @if ($i->id_akses == 1 || $i->id_akses == 2)
               <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link ">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -114,7 +128,9 @@
                         Logout
                     </p>
                 </a>
-              </li>
+              </li>   
+              @endif               
+              @endforeach
              </ul>
          </nav>
          
