@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -148,6 +149,29 @@ class UserController extends Controller
 
 
         // Flash a success message to the session
+        return redirect()->route('data.petugas.show', ['id' => $id])->with('success', 'Record updated successfully!');
+    }
+    public function photo(Request $request,  string $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data =  $request->validate([
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Memastikan tipe file adalah gambar (jpeg, png, jpg, gif) dan ukurannya tidak lebih dari 2MB
+        ]);
+        // Memeriksa apakah gambar sudah ada sebelumnya
+        if ($user->profile_photo != null) {
+                // Hapus gambar yang sudah ada sebelumnya
+                Storage::delete('public/photo/'.$user->profile_photo);
+        }
+
+        // Mengambil file gambar dari request
+        $image = $request->file('profile_photo');
+
+        // Menyimpan gambar ke dalam direktori 'public/posts' dengan nama file yang dihasilkan menggunakan hash dari konten gambar
+        $path = $image->storeAs('public/photo', $image->hashName());
+
+        $user->update(['profile_photo'=> $image->hashName()]);
+        //Flash a success message to the session
         return redirect()->route('data.petugas.show', ['id' => $id])->with('success', 'Record updated successfully!');
     }
 }

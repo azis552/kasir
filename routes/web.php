@@ -55,6 +55,7 @@ Route::get('/dashboard',function(){
 Route::get('data/petugas',[UserController::class,'index'])->name('data.petugas');
 Route::get('data/petugas/create',[UserController::class,'create'])->name('data.petugas.create');
 Route::post('data/petugas',[UserController::class,'store'])->name('data.petugas.store');
+Route::PUT('data/petugas/photo/{id}',[UserController::class,'photo'])->name('data.petugas.photo');
 Route::get('data/petugas/{id}/show',[UserController::class,'show'])->name('data.petugas.show');
 Route::get('data/petugas/{id}/edit',[UserController::class,'edit'])->name('data.petugas.edit');
 Route::PUT('data/petugas/update/{id}',[UserController::class,'update'])->name('data.petugas.update');
