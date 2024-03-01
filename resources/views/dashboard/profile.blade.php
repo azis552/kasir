@@ -33,27 +33,38 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                       src="{{ asset('adminlte') }}/dist/img/user4-128x128.jpg"
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center">{{ Auth::User()->name }}</h3>
+                @foreach (Auth::User()->role as $item)
 
-                <p class="text-muted text-center">Software Engineer</p>
-
+                  <p class="text-muted text-center">
+                      @if ($item->id_akses == "1")
+                          ADMIN 
+                      @else
+                          PETUGAS
+                      @endif
+                  </p>
+                    
+                @endforeach
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Followers</b> <a class="float-right">1,322</a>
+                    <b>NIK</b> <a class="float-right">{{ $data->detailUser->nik}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Following</b> <a class="float-right">543</a>
+                    <b>Email</b> <a class="float-right">{{$data->email}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Friends</b> <a class="float-right">13,287</a>
+                    <b>Umur</b> <a class="float-right">{{ $umur }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Alamat</b></b> <a class="float-right">{{ $data->detailUser->alamat}}</a>
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <a href="#" class="btn btn-primary btn-block"><b>Update Photo</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -72,9 +83,11 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class="active tab-pane" id="activity">
-                    <form action="{{ route('data.petugas.update',$data->id) }}" method="post">
+                    <form action="{{ route('data.petugas.profile',$data->id) }}" method="post">
                         @csrf
                         @method('PUT')
+                        <label for="">NIK</label>
+                        <input type="text" class="form-control" name="nik" value="{{$data->detailUser->nik}}">
                         <label for="">Nama</label>
                         <input type="text" class="form-control" name="name" value="{{ $data->name }}">
                         <label for="">Nama Lengkap</label>
@@ -83,7 +96,11 @@
                         <input type="date" class="form-control" name="tanggal_lahir" value="{{$data->detailUser->tanggal_lahir}}">
                         <label for="">Email</label>
                         <input type="email" class="form-control" name="email" value="{{$data->email}}">
-                     
+                        <label for="">Alamat</label>
+                        <input type="text" class="form-control" name="alamat" value="{{$data->detailUser->alamat}}">
+                        <label for="">No Telepon</label>
+                        <input type="text" class="form-control" name="no_tlfn" value="{{$data->detailUser->no_tlfn}}">
+                        
                         <button type="submit" class="btn btn-warning mt-2">Edit</button>
                     </form>
 

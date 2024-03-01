@@ -36,6 +36,8 @@
                     <form action="{{ route('data.petugas.update',$data->id) }}" method="post">
                         @csrf
                         @method('PUT')
+                        <label for="">NIK</label>
+                        <input type="text" class="form-control" name="nik" value="{{$data->detailUser->nik}}">
                         <label for="">Nama</label>
                         <input type="text" class="form-control" name="name" value="{{ $data->name }}">
                         <label for="">Nama Lengkap</label>
@@ -44,6 +46,10 @@
                         <input type="date" class="form-control" name="tanggal_lahir" value="{{$data->detailUser->tanggal_lahir}}">
                         <label for="">Email</label>
                         <input type="email" class="form-control" name="email" value="{{$data->email}}">
+                        <label for="">Alamat</label>
+                        <input type="text" class="form-control" name="alamat" value="{{$data->detailUser->alamat}}">
+                        <label for="">No Telepon</label>
+                        <input type="text" class="form-control" name="no_tlfn" value="{{$data->detailUser->no_tlfn}}">
                      
                         <button type="submit" class="btn btn-warning mt-2">Edit</button>
                     </form>

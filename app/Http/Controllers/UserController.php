@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailUser;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -63,7 +64,9 @@ class UserController extends Controller
     public function show(string $id)
     {
         $data = User::findOrFail($id);
-        return view('dashboard.profile', ['data' => $data]);
+        $tanggal_lahir = Carbon::parse($data->detailUser->tanggal_lahir);
+        $umur = $tanggal_lahir->age;
+        return view('dashboard.profile', ['data' => $data,'umur'=>$umur]);
     }
 
     /**
@@ -88,7 +91,10 @@ class UserController extends Controller
         // berfungsi untuk memvalidasi data detail user
         $validasiDetailUser = $request->validate([
             'nama_lengkap' => 'required',
-            'tanggal_lahir' => 'required'
+            'tanggal_lahir' => 'required',
+            'nik' => '',
+            'alamat' => '',
+            'no_tlfn' => '',
         ]);
         // Mencari record yang dritubah
         $data = User::findOrFail($id);
@@ -115,5 +121,33 @@ class UserController extends Controller
         $data->delete();
         return redirect('/data/petugas')->with('success', 'Record deleted successfully!');
         
+    }
+    public function update_profile(Request $request, string $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            // Add more validation rules for other columns
+        ]);
+        // berfungsi untuk memvalidasi data detail user
+        $validasiDetailUser = $request->validate([
+            'nama_lengkap' => 'required',
+            'tanggal_lahir' => 'required',
+            'nik' => '',
+            'alamat' => '',
+            'no_tlfn' => '',
+        ]);
+        // Mencari record yang dritubah
+        $data = User::findOrFail($id);
+        // proses ubah data table user
+        $data->update($validatedData);
+        // mencari record yang dirubah di table detail user
+        $detailUser = DetailUser::where('id_user', $id)->first();
+        // Update data detail user
+        $detailUser->update($validasiDetailUser);
+
+
+        // Flash a success message to the session
+        return redirect()->route('data.petugas.show', ['id' => $id])->with('success', 'Record updated successfully!');
     }
 }

@@ -58,6 +58,7 @@ Route::post('data/petugas',[UserController::class,'store'])->name('data.petugas.
 Route::get('data/petugas/{id}/show',[UserController::class,'show'])->name('data.petugas.show');
 Route::get('data/petugas/{id}/edit',[UserController::class,'edit'])->name('data.petugas.edit');
 Route::PUT('data/petugas/update/{id}',[UserController::class,'update'])->name('data.petugas.update');
+Route::PUT('data/petugas/update_profile/{id}',[UserController::class,'update_profile'])->name('data.petugas.profile');
 Route::DELETE('data/petugas/delete/{id}',[UserController::class,'destroy'])->name('data.petugas.delete');
 
 Route::resource('data/akses',AksesController::class);
