@@ -98,6 +98,7 @@
                          @endif
                      </ul>
                  </li>
+                 
                  @if ($i->id_akses == 1 || $i->id_akses == 2)
                  <li class="nav-item">
                      <a href="{{ route('transaksi.index') }}" class="nav-link">
@@ -120,6 +121,33 @@
                     </a>
                 </li>
                 @endif
+                <li class="nav-item {{ Route::is('laporan.barang') || Route::is('laporan.transaksi')  ? 'menu-open' : '' }} ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Laporan
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                       @if ($i->id_akses == 1)
+                        <li class="nav-item ">
+                            <a href=" {{ route('data.petugas') }} " class="nav-link {{ Route::is('laporan.barang')  ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laporan barang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                           <a href=" {{ route('akses.index') }} " class="nav-link {{ Route::is('laporan.transaksi')  ? 'active' : '' }}">
+                               <i class="far fa-circle nav-icon"></i>
+                               <p>Laporan Transaksi</p>
+                           </a>
+                       </li>
+                       
+                       @endif
+                      
+                    </ul>
+                </li>
                  @if ($i->id_akses == 1 || $i->id_akses == 2)
               <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link ">
