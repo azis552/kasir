@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('transaksi/terbayar', [TransaksiController::class, 'sudah_bayar'])->name('transaksi.terbayar');
     Route::get('transaksi/{id}/pdf', [TransaksiController::class, 'nota'])->name('nota.pdf');
 
-    Route::get('laporan/barang',[BarangController::class,'index'])->name('laporan.barang');
-    Route::get('laporan/penjualan',[TransaksiController::class,'sudah_bayar'])->name('laporan.transaksi');
+    Route::get('laporan/barang',[BarangController::class,'laporan_barang'])->name('laporan.barang');
+    Route::post('laporan/barang/cetak',[BarangController::class,'cetak_barang'])->name('cetak.barang');
+    Route::get('laporan/penjualan',[TransaksiController::class,'laporan_transaksi'])->name('laporan.transaksi');
+    Route::post('laporan/penjualan/cetak',[TransaksiController::class,'cetak_transaksi'])->name('cetak.transaksi');
 });

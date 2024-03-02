@@ -43,6 +43,14 @@
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<!-- Mengimpor library JavaScript Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Mengimpor library JavaScript Bootstrap Datepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<!-- Library QR Code -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode"></script>
 </body>
 </html>
 
@@ -96,3 +104,13 @@
       });
   });
 </script>
+<script>
+  $(document).ready(function(){
+    $('#datepicker').datepicker({
+      format: "mm-yyyy",
+      minViewMode: 1
+    });
+  });
+  </script>
+
+  

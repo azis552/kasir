@@ -70,4 +70,23 @@ class TransaksiController extends Controller
         // $pdf = FacadePdf::loadView('dashboard.pdf.invoice', $data);
         // return $pdf->download('invoice.pdf');
     }
+
+    public function laporan_transaksi()
+    {
+        $data = Penjualan::all();
+
+        return view('dashboard.data_transaksi.laporan_transaksi',['data' => $data]);
+    }
+
+    public function cetak_transaksi(Request $request)
+    {
+        $bulan_tahun = $request->input('bulan_tahun');
+
+        list($bulan, $tahun) = explode('-', $bulan_tahun);
+
+        $results = Penjualan::whereYear('created_at', $tahun)
+                            ->whereMonth('created_at', $bulan)
+                            ->get();
+        return view('dashboard.pdf.laporan_transaksi',['data' => $results,'bulan_tahun' => $bulan_tahun]);
+    }
 }

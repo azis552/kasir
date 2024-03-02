@@ -117,4 +117,21 @@ class BarangController extends Controller
         return redirect('/data/barang')
         ->with('success', 'Stok Added successfully!');
     }
+    public function laporan_barang()
+    {
+        $data = Barang::all();
+
+        return view('dashboard.data_barang.laporan_barang',['data' => $data]);
+    }
+    public function cetak_barang(Request $request)
+    {
+        $bulan_tahun = $request->input('bulan_tahun');
+
+        list($bulan, $tahun) = explode('-', $bulan_tahun);
+
+        $results = Barang::whereYear('created_at', $tahun)
+                            ->whereMonth('created_at', $bulan)
+                            ->get();
+        return view('dashboard.pdf.laporan_barang',['data' => $results,'bulan_tahun' => $bulan_tahun]);
+    }
 }
