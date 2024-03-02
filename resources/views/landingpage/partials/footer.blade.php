@@ -215,7 +215,7 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                     $('#error-alert').removeClass('d-none');
-                    $('#error-message').text('Terjadi kesalahan. Silakan coba lagi.');
+                    $('#error-message').text('Stok Habis');
                     setTimeout(function() {
                         $('#error-alert').addClass('d-none');
                     }, 5000); // Sesuaikan dengan kebutuhan Anda

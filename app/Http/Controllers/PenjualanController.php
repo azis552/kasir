@@ -29,31 +29,28 @@ class PenjualanController extends Controller
             'id_penjualan' => $id_penjualan,
             'nama_pemesan' => $nama_pemesan,
         ];
-        $data = DetailPenjualan::where('sesi','=',$key)->get();
+        $data = DetailPenjualan::where('sesi', '=', $key)->get();
         foreach ($data as $detail) {
             // Mengurangi stok barang
             $barang = Barang::find($detail->id_barang);
             $barang->stok -= $detail->jumlah_barang;
             $barang->save();
         }
-        $data = DetailPenjualan::where('sesi','=',$key);
+        $data = DetailPenjualan::where('sesi', '=', $key);
         $data->update($detail_pemesanan);
         $request->session()->forget('cart');
-        return redirect('penjualan')->with('success','Pesanan Berhasil Silahkan Ke Kasir');
-
-
+        return redirect('penjualan')->with('success', 'Pesanan Berhasil Silahkan Ke Kasir');
     }
     public function keranjang()
     {
         @$key = session('cart');
-        
-        if($key==null){
+
+        if ($key == null) {
             return view('landingpage.keranjang');
-        }else{
-            $penjualan = DetailPenjualan::where('sesi','=',$key)->get();
-            return view('landingpage.keranjang',['penjualan'=>$penjualan]);
+        } else {
+            $penjualan = DetailPenjualan::where('sesi', '=', $key)->get();
+            return view('landingpage.keranjang', ['penjualan' => $penjualan]);
         }
-        
     }
     public function batal_pesan(Request $request)
     {
@@ -67,7 +64,7 @@ class PenjualanController extends Controller
     {
         $barang = Barang::all();
         $categori = Categori::all();
-        return view('landingpage.index',['barang'=>$barang,'categori'=>$categori]);
+        return view('landingpage.index', ['barang' => $barang, 'categori' => $categori]);
     }
 
     /**
@@ -83,31 +80,36 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-    $timestamp = Carbon::now()->format('Y-m-d H:i:s.u');
-    if (!$request->session()->has('cart')) {
-        // Jika session belum ada, buat session baru untuk keranjang belanja
-         $request->session()->put('cart', $timestamp,1);
-    }
-    $sesi = $request->session()->get('cart');
-    // Ambil data barang yang dikirim dari form
-    $barangId = $request->input('id_barang');
-    $jumlah = $request->input('qty_val');
+        $timestamp = Carbon::now()->format('Y-m-d H:i:s.u');
+        if (!$request->session()->has('cart')) {
+            // Jika session belum ada, buat session baru untuk keranjang belanja
+            $request->session()->put('cart', $timestamp, 1);
+        }
+        $sesi = $request->session()->get('cart');
+        // Ambil data barang yang dikirim dari form
+        $barangId = $request->input('id_barang');
+        $jumlah = $request->input('qty_val');
 
-    // pencarian harga
-    $barang = Barang::findOrFail($barangId);
-    $harga = $barang->harga;
-    // total harga
-    $total = $harga*$jumlah;
+        // pencarian harga
+        $barang = Barang::findOrFail($barangId);
 
-    $keranjang = new DetailPenjualan();
-    $keranjang->id_barang = $barangId;
-    $keranjang->jumlah_barang = $jumlah;
-    $keranjang->total = $total;
-    $keranjang->sesi = $sesi;
-    $keranjang->save();
+        if ($barang->stok <= 0) {
+            return response()->json(['error' => true]);
+        } else {
+            $harga = $barang->harga;
+            // total harga
+            $total = $harga * $jumlah;
 
-    // Beri respons JSON untuk AJAX
-    return response()->json(['success' => true]);
+            $keranjang = new DetailPenjualan();
+            $keranjang->id_barang = $barangId;
+            $keranjang->jumlah_barang = $jumlah;
+            $keranjang->total = $total;
+            $keranjang->sesi = $sesi;
+            $keranjang->save();
+
+            // Beri respons JSON untuk AJAX
+            return response()->json(['success' => true]);
+        }
     }
 
     /**

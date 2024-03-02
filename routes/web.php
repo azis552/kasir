@@ -78,4 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::PUT('transaksi/bayar/{id}', [TransaksiController::class, 'bayar'])->name('transaksi.bayar');
     Route::get('transaksi/terbayar', [TransaksiController::class, 'sudah_bayar'])->name('transaksi.terbayar');
     Route::get('transaksi/{id}/pdf', [TransaksiController::class, 'nota'])->name('nota.pdf');
+
+    Route::get('laporan/barang',[BarangController::class,'index'])->name('laporan.barang');
+    Route::get('laporan/penjualan',[TransaksiController::class,'sudah_bayar'])->name('laporan.transaksi');
 });

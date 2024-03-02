@@ -132,13 +132,13 @@
                     <ul class="nav nav-treeview">
                        @if ($i->id_akses == 1)
                         <li class="nav-item ">
-                            <a href=" {{ route('data.petugas') }} " class="nav-link {{ Route::is('laporan.barang')  ? 'active' : '' }}">
+                            <a href=" {{ route('laporan.barang') }} " class="nav-link {{ Route::is('laporan.barang')  ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Laporan barang</p>
                             </a>
                         </li>
                         <li class="nav-item ">
-                           <a href=" {{ route('akses.index') }} " class="nav-link {{ Route::is('laporan.transaksi')  ? 'active' : '' }}">
+                           <a href=" {{ route('laporan.transaksi') }} " class="nav-link {{ Route::is('laporan.transaksi')  ? 'active' : '' }}">
                                <i class="far fa-circle nav-icon"></i>
                                <p>Laporan Transaksi</p>
                            </a>
