@@ -4,6 +4,7 @@ use App\Http\Controllers\AksesController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\Categori;
 use App\Http\Controllers\CategoriController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenjualanController;
@@ -52,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('dashboard.dashboard');
     });
+    Route::resource('/dashboard',DashboardController::class);
 
     Route::get('data/petugas', [UserController::class, 'index'])->name('data.petugas');
     Route::get('data/petugas/create', [UserController::class, 'create'])->name('data.petugas.create');
