@@ -132,8 +132,10 @@
 <script>
     $(document).ready(function() {
         // Generate QR code
+        var username = "{{ Auth::user()->name }} \n"+" Tanggal : {{ now() }}"; // Mendapatkan nama pengguna dari auth Laravel
+        var qrText = "Ditanda tangan di PT PENJUALAN\n" + username;
         var qr = new QRCode(document.getElementById("qrcode"), {
-            text: "Your QR code data",
+            text: qrText,
             width: 90,  // Set the width of QR code
             height: 90  // Set the height of QR code
         });

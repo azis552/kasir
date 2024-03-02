@@ -115,6 +115,7 @@
             
 
     </table>
+    
     <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-end; margin-right: 5%;">
         <label style="margin-top: 2%;">Kediri, {{ now() }}</label>
         <div id="qrcode" style="margin-top: 2%;"></div>
@@ -134,8 +135,10 @@
 <script>
     $(document).ready(function() {
         // Generate QR code
+        var username = "{{ Auth::user()->name }} \n"+" Tanggal : {{ now() }}"; // Mendapatkan nama pengguna dari auth Laravel
+        var qrText = "Ditanda tangan di PT PENJUALAN\n" + username;
         var qr = new QRCode(document.getElementById("qrcode"), {
-            text: "Your QR code data",
+            text: qrText,
             width: 90,  // Set the width of QR code
             height: 90  // Set the height of QR code
         });
