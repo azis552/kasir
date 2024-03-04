@@ -48,6 +48,11 @@ Route::get('/forget', function () {
 Route::get('/recovery', function () {
     return view('login.recovery');
 });
+
+Route::resource('penjualan', PenjualanController::class);
+Route::get('keranjang', [PenjualanController::class, 'keranjang'])->name('keranjang');
+    Route::get('batal_pesan', [PenjualanController::class, 'batal_pesan'])->name('batal_pesan');
+    Route::post('checkout', [PenjualanController::class, 'checkout'])->name('checkout');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', function () {
@@ -71,10 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('data/barang', BarangController::class);
 
     Route::resource('data/categori', CategoriController::class);
-    Route::resource('penjualan', PenjualanController::class);
-    Route::get('keranjang', [PenjualanController::class, 'keranjang'])->name('keranjang');
-    Route::get('batal_pesan', [PenjualanController::class, 'batal_pesan'])->name('batal_pesan');
-    Route::post('checkout', [PenjualanController::class, 'checkout'])->name('checkout');
+    Route::delete('transaksi/delete/{id}',[TransaksiController::class,'destroy'])->name('transaksi.destroy');
     Route::get('transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
     Route::get('transaksi/{id}/detail', [TransaksiController::class, 'detail_transaksi'])->name('transaksi.detail');
     Route::PUT('transaksi/bayar/{id}', [TransaksiController::class, 'bayar'])->name('transaksi.bayar');

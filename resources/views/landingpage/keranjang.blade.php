@@ -712,7 +712,15 @@
                                                 <td>{{ formatRupiah($i->barang->harga) }}</td>
                                                 <td>{{ $i->jumlah_barang }}</td>
                                                 <td>{{ formatRupiah($i->total) }}</td>
-                                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                                <td class="action" data-title="Remove">
+                                                    <form action="{{ route('penjualan.destroy',$i->id) }}" method="post">
+                                                        @csrf
+                                                        @method('Delete')
+                                                        <button type="submit" class="text-muted">
+                                                            <i class="fi-rs-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif

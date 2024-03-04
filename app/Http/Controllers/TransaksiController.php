@@ -89,4 +89,16 @@ class TransaksiController extends Controller
                             ->get();
         return view('dashboard.pdf.laporan_transaksi',['data' => $results,'bulan_tahun' => $bulan_tahun]);
     }
+    public function destroy(string $id)
+    {
+        $data_penjualan = Penjualan::findOrFail($id);
+        $data_detail_penjualan = DetailPenjualan::where('id_penjualan','=',$id);
+        
+        $data_detail_penjualan->delete();
+        $data_penjualan->delete();
+        $data= Penjualan::where('status','=','pesan')
+        ->orderBy('created_at','desc')
+        ->get();
+        return view('dashboard.data_transaksi',['data'=>$data]);
+    }
 }

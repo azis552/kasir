@@ -58,7 +58,7 @@
                                     <td>{{ $i->tanggal_penjualan }}</td>
                                     <td>{{ formatRupiah($i->total_harga) }}</td>
                                     <td>
-                                        <form action="{{ route('data.petugas.delete', $i->id) }}"
+                                        <form action="{{ route('transaksi.destroy', $i->id) }}"
                                             method="post" class="delete-form">
                                             @csrf
                                             @method('DELETE')

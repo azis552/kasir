@@ -141,7 +141,16 @@ class PenjualanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = DetailPenjualan::findOrFail($id);
+        $data->delete();
+        @$key = session('cart');
+
+        if ($key == null) {
+            return view('landingpage.keranjang');
+        } else {
+            $penjualan = DetailPenjualan::where('sesi', '=', $key)->get();
+            return view('landingpage.keranjang', ['penjualan' => $penjualan]);
+        }
     }
    
 }
