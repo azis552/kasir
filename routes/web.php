@@ -43,12 +43,8 @@ Route::get('/logout', [LoginController::class, 'logout'])
 
 Route::get('/forget', function () {
     return view('login.forget');
-});
-
-Route::get('/recovery', function () {
-    return view('login.recovery');
-});
-
+})->name('forget');
+Route::post('/reset', [LoginController::class,'reset'])->name('reset');
 Route::resource('penjualan', PenjualanController::class);
 Route::get('keranjang', [PenjualanController::class, 'keranjang'])->name('keranjang');
     Route::get('batal_pesan', [PenjualanController::class, 'batal_pesan'])->name('batal_pesan');

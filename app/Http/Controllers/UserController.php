@@ -174,4 +174,6 @@ class UserController extends Controller
         //Flash a success message to the session
         return redirect()->route('data.petugas.show', ['id' => $id])->with('success', 'Record updated successfully!');
     }
+
+    
 }

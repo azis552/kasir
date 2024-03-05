@@ -12,18 +12,18 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-                    <form action="recover-password.html" method="post">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                </div>
-                            </div>
-                        </div>
+                    <form action="{{route('reset')}}" method="post">
+                        @csrf
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <label for="">Password</label>
+                            <input type="text" class="form-control" name="password" placeholder="password">
+                            <label for="">Re-Type Password</label>
+                            <input type="text" name="retypepassword" placeholder="retype password" class="form-control" id="">
+                       
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block">Request new password</button>
+                                <button type="submit" class="btn btn-primary btn-block mt-2">Request new password</button>
                             </div>
                             <!-- /.col -->
                         </div>
